@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+  body {
+    background-color: #1c1c1c;
+    color: #fff;
+    margin: 0;
+  }
+
+  .container {
+    padding-top: 50px;
+  }
+
+  .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px; /* Reduce the margin between columns */
+  }
+
+
+  img {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-right: 10px; /* Adjust the margin to the right of the image */
+  }
+
+  .col-md-6.movie-info {
+    text-align: left;
+    margin-left: 10px; /* Adjust the left margin of the movie info column */
+    margin-right: 0; /* Remove or adjust the right margin of the movie info column */
+  }
+
+  .col-md-4.image-card {
+      max-width: 60%; /* Set maximum width to 100% */
+      margin-right: 20px;
+      border: none;
+      background-color: transparent;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: left;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+    color: #ffc107; /* Change year color to yellow */
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .btn {
+    margin-top: 15px;
+  }
+
+  .btn-warning,
+  .btn-danger {
+    background-color: #ffc107; /* Change button background color to yellow */
+    border-color: #ffc107; /* Change button border color to yellow */
+    color: #1c1c1c; /* Change button text color to black */
+    border-radius: 8px; /* Add border-radius for rounded corners */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add box shadow for a subtle lift */
+    font-weight: bold; /* Make button text bold */
+    font-size: 1.2rem; /* Increase button text size */
+  }
+
+  .btn-warning:hover,
+  .btn-danger:hover {
+    background-color: #e0a800; /* Darken button background color on hover */
+    border-color: #e0a800; /* Darken button border color on hover */
+    color: #1c1c1c; /* Change text color on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Increase box shadow on hover */
+  }
+
+  .btn-danger {
+    margin-right: 10px; /* Add margin-right for spacing between buttons */
+  }
+</style>
+
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ movie.img.url }}" class="img-fluid" alt="{{ movie.name }}">
+        </div>
+
+        <div class="col-md-6">
+            <div class="text-light">
+                <h1>{{ movie.name }}</h1>
+                <span><h5>{{ movie.year }}</h5></span>
+                <p>{{ movie.desc }}</p>
+
+                <a class="btn btn-warning" href="{% url 'movieapp:update' movie.id %}">Update</a>
+
+                <a class="btn btn-danger" href="{% url 'movieapp:delete' movie.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

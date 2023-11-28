@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+  body {
+    background-color: #1c1c1c;
+    color: #fff;
+    margin: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    font-family: 'Verdana', sans-serif; /* Change font family for the heading */
+  }
+
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  input[type="text"],
+  input[type="file"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #444;
+    border-radius: 5px;
+  }
+
+  input[type="submit"] {
+    background-color: #ffc107;
+    border: none;
+    color: #1c1c1c;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #e0a800;
+  }
+</style>
+
+<h2>Add New Movie</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="text" name="name" placeholder="Enter the movie name"><br>
+  <input type="text" name="desc" placeholder="Enter the movie description"><br>
+  <input type="text" name="year" placeholder="Enter the movie year"><br>
+  <input type="file" name="img"><br>
+  <input type="submit"><br>
+</form>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<style>
+  body {
+    background-color: #1c1c1c;
+    color: #fff;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .container {
+    text-align: center;
+    padding: 50px 0;
+  }
+
+  .col-md-6 {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  form {
+    margin-top: 20px;
+  }
+
+  p.text-center {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+  }
+</style>
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form method="POST">
+                {% csrf_token %}
+
+                <p class="text-center text-white">Are you sure you want to delete this movie?</p>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
